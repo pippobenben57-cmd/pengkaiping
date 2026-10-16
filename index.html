@@ -105,6 +105,19 @@ td.j{font-family:var(--sans);font-size:.78rem;color:var(--faint)}
 .steps li::before{content:counter(s);font-family:var(--sans);color:var(--panel);background:var(--acc);width:1.6em;height:1.6em;border-radius:50%;display:grid;place-items:center;font-size:.86rem;margin-top:.25em}
 .steps p{margin:2px 0 0}
 .src a{word-break:break-all}
+.pillar{border-top:2px solid var(--ink);margin-top:34px;padding-top:10px}
+.pillar h3{margin:0;color:var(--ink);font-size:1.6rem}
+.pillar h3 small{font-family:var(--kai);color:var(--acc);font-size:1.05rem;margin-left:10px}
+.pt{padding:12px 0;border-top:1px dotted var(--line)}
+.pt h4{color:var(--acc)}
+.pt p{margin:4px 0 0}
+.pt .from{font-family:var(--sans);font-size:.76rem;color:var(--faint);margin-top:4px}
+.talk{padding:14px 0;border-top:1px solid var(--line)}
+.talk h4{font-size:1.25rem}
+.talk h4 small{font-family:var(--sans);font-size:.78rem;color:var(--acc);margin-right:8px}
+.talk .meta{font-size:.86rem;color:var(--soft);margin:2px 0 4px}
+.lec h3{margin-top:30px}
+.lec .pt h4{font-size:1.15rem}
 footer{margin-top:56px;padding-top:14px;border-top:1px solid var(--line);font-size:.8rem;color:var(--faint);max-width:60em}
 </style>
 </head>
@@ -120,9 +133,12 @@ footer{margin-top:56px;padding-top:14px;border-top:1px solid var(--line);font-si
   <a href="#/" data-t="">总览</a>
   <a href="#/life" data-t="life">生平</a>
   <a href="#/research" data-t="research">学术研究</a>
-  <a href="#/ideas" data-t="ideas">核心观点</a>
+  <a href="#/sys" data-t="sys">思想体系</a>
+  <a href="#/ideas" data-t="ideas">常讲的话</a>
   <a href="#/tools" data-t="tools">方法</a>
   <a href="#/edu" data-t="edu">积极教育</a>
+  <a href="#/talks" data-t="talks">演讲访谈</a>
+  <a href="#/lecture" data-t="lecture">AI时代讲座</a>
   <a href="#/books" data-t="books">著作</a>
   <a href="#/learn" data-t="learn">怎么学</a>
 </nav>
@@ -132,6 +148,7 @@ footer{margin-top:56px;padding-top:14px;border-top:1px solid var(--line);font-si
 <script src="p1.js"></script>
 <script src="p2.js"></script>
 <script src="p3.js"></script>
+<script src="p4.js"></script>
 <script>
 "use strict";
 const $=s=>document.querySelector(s),main=$("#main"),qres=$("#qres"),q=$("#q");
@@ -149,7 +166,10 @@ V[""]=()=>`<p class="big">幸福是一种有意义的快乐。</p>
 <div class="cards">
 <a href="#/life"><b>生平</b><span>岳阳、北大、密歇根、伯克利、清华；年表、职务、荣誉、课程。</span></a>
 <a href="#/research"><b>学术研究</b><span>归因、朴素辩证、整体思维、道德、敬畏、大数据；三十六篇代表论文。</span></a>
-<a href="#/ideas"><b>核心观点</b><span>有意义的快乐、福流、积极天性、白熊效应、钱与幸福、中国文化。</span></a>
+<a href="#/sys"><b>思想体系</b><span>十二个部分：人性、幸福、福流、意义、情绪、道德、教育、组织、社会、技术、中国文化、科学观。</span></a>
+<a href="#/talks"><b>演讲访谈</b><span>2017 到 2025 年十二场演讲和访谈的要点，附出处链接。</span></a>
+<a href="#/lecture"><b>AI 时代讲座</b><span>2025 年讲座精读：负面偏差、HEA、连贯感、福流、慧眼禅心。</span></a>
+<a href="#/ideas"><b>常讲的话</b><span>有意义的快乐、福流、积极天性、白熊效应、钱与幸福。</span></a>
 <a href="#/tools"><b>方法</b><span>五施法、调节情绪的八种方法、福流练习，可以直接用。</span></a>
 <a href="#/edu"><b>积极教育</b><span>孩子的七种品格优势、王者之力、清华积极教育课程的六个模块。</span></a>
 <a href="#/books"><b>著作</b><span>十余部书的出版信息、内容和完整目录。</span></a>
@@ -178,6 +198,14 @@ ${P.RESEARCH.map(x=>`<div class="row"><h4>${esc(x[0])}<small>${esc(x[1])}</small
 
 V.ideas=()=>`<h2>核心观点</h2><p class="lede">下面是他在书、课程、演讲和访谈中反复讲的观点，由编者归纳转述。</p>${P.IDEAS.map(x=>row(x[0],x[1])).join("")}`;
 
+
+V.sys=()=>`<h2>思想体系</h2><p class="lede">${esc(P.SYS_INTRO)}</p>
+<div class="jump" style="display:flex;flex-wrap:wrap;gap:4px 14px;font-family:var(--kai);font-size:1.05rem">${P.SYS.map((x,i)=>`<a href="#s${i}" data-anchor="s${i}" style="color:var(--soft);text-decoration:none">${esc(x[0].replace(/^[^、]+、/,""))}</a>`).join("")}</div>
+${P.SYS.map((x,i)=>`<section class="pillar" id="s${i}"><h3>${esc(x[0])}<small>${esc(x[1])}</small></h3>${x[2].map(p=>`<div class="pt"><h4>${esc(p[0])}</h4><p>${esc(p[1])}</p><p class="from">出处：${esc(p[2])}</p></div>`).join("")}</section>`).join("")}`;
+V.talks=()=>`<h2>演讲与访谈</h2><p class="lede">按时间排列的十二场演讲和访谈，每场列出主要内容。链接指向报道原文，内容是编者的概括。</p>
+${P.TALKS.map(t=>`<div class="talk"><h4><small>${esc(t[0])}</small>${esc(t[1])}</h4><p class="meta">${esc(t[2])}${t[4]?`　<a href="${esc(t[4])}" rel="noopener">原文 →</a>`:`　<a href="#/lecture">精读 →</a>`}</p><ul class="take">${t[3].map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("")}`;
+V.lecture=()=>{const L=P.LECTURE;return `<div class="lec"><h2>${esc(L.title)}</h2><p class="lede">${esc(L.meta)}</p><p class="fine">${esc(L.note)}</p>
+${L.parts.map(p=>`<h3>${esc(p[0])}</h3>${p[1].map(x=>`<div class="pt"><h4>${esc(x[0])}</h4><p>${esc(x[1])}</p></div>`).join("")}`).join("")}</div>`};
 V.tools=()=>`<h2>方法</h2><p class="lede">他讲积极心理学，总会落到可以马上做的事上。这些方法简单，重在每天练。</p>
 ${tool(P.WUSHI)}${tool(P.BAZHEN)}${tool(P.FLOWTIPS)}
 <h3>其他常讲的练习</h3>${P.OTHERTIPS.map(x=>row(x[0],x[1])).join("")}`;
@@ -212,12 +240,15 @@ function route(){
   main.innerHTML=(V[t]||V[""])(p[1]);window.scrollTo(0,0);
 }
 window.addEventListener("hashchange",route);
-document.addEventListener("click",e=>{const b=e.target.closest("[data-book]");if(b)location.hash="#/books/"+b.dataset.book});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-book]");if(b){location.hash="#/books/"+b.dataset.book;return}const an=e.target.closest("[data-anchor]");if(an){e.preventDefault();document.getElementById(an.dataset.anchor).scrollIntoView({block:"start"})}});
 
 const IDX=[],add=(w,r,t,x)=>IDX.push({w,r,t,x:String(x)});
 P.LIFE.forEach(x=>add("生平","life",x[0],x[1]));P.TIMELINE.forEach(x=>add("年表","life",x[0],x[1]));P.ROLES.forEach(x=>add("职务","life",x[0],x[1]));P.TEACH.forEach(x=>add("教学","life",x[0],x[1]));add("生平","life",P.COVID[0],P.COVID[1]);
 P.RESEARCH.forEach(x=>add("学术研究","research",x[0],x[2]+x[3].join("")));P.PAPERS.forEach(x=>add("论文","research",x[0]+" "+x[2],x[1]+x[3]));
-P.IDEAS.forEach(x=>add("核心观点","ideas",x[0],x[1]));
+P.IDEAS.forEach(x=>add("常讲的话","ideas",x[0],x[1]));
+P.SYS.forEach(x=>x[2].forEach(p=>add("思想体系·"+x[0].replace(/^[^、]+、/,""),"sys",p[0],p[1]+p[2])));
+P.TALKS.forEach(t=>add("演讲访谈","talks",t[0]+" "+t[1],t[2]+t[3].join("")));
+P.LECTURE.parts.forEach(p=>p[1].forEach(x=>add("AI时代讲座","lecture",x[0],x[1])));
 [P.WUSHI,P.BAZHEN,P.FLOWTIPS].forEach(t=>t.items.forEach(x=>add(t.t,"tools",x[0],x[1])));P.OTHERTIPS.forEach(x=>add("方法","tools",x[0],x[1]));
 add("积极教育","edu","七种品格优势",P.EDU.seven.join("")+P.EDU.king);add("积极教育","edu","清华积极教育课程",P.EDU.course);
 P.BOOKS.forEach(b=>{add("著作","books/"+b.id,b.t,b.one+b.about);b.toc.forEach(p=>p[1].forEach(c=>add(b.t.split("：")[0],"books/"+b.id,c,p[0])))});

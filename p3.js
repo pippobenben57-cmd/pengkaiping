@@ -69,6 +69,15 @@ P.SOURCES=[
 ["清华新闻网 · 真人图书馆：活出心花怒放的人生（2024）","https://www.tsinghua.edu.cn/info/1002/110866.htm"],
 ["澎湃新闻 · 彭凯平 × 许知远","https://m.thepaper.cn/newsDetail_forward_22513505"],
 ["清华大学出版社 · 吾心可鉴：澎湃的福流","http://www.tup.tsinghua.edu.cn/bookscenter/book_09405201.html"],
-["豆瓣读书 · 彭凯平作品","https://book.douban.com/author/4612822/books"]
+["豆瓣读书 · 彭凯平作品","https://book.douban.com/author/4612822/books"],
+["清华社科学院 · 打造幸福中国，心理学如何作为？对话彭凯平","https://www.sss.tsinghua.edu.cn/info/1074/1958.htm"],
+["清华社科学院 · 拒绝鸡汤，走向澎湃的福流","https://www.sss.tsinghua.edu.cn/info/1074/1942.htm"],
+["腾讯新闻 · 心理学者彭凯平谈青少年心理健康（2024）","https://news.qq.com/rain/a/20240730A09SG900"],
+["澎湃 · 专访清华心理系主任谈家庭教育焦虑","https://m.thepaper.cn/baijiahao_15292522"],
+["经济观察网 · 《2023 幸福企业白皮书》","https://m.eeo.com.cn/2024/0606/665373.shtml"],
+["搜狐 · 积极心理学练就企业家的心理韧性","https://www.sohu.com/a/684422308_100059166"],
+["新浪财经 · 对话彭凯平：幸福企业的价值风向标（华夏时报 2025）","https://finance.sina.com.cn/roll/2025-04-07/doc-inesiwtu5759941.shtml"],
+["网易 · 第一财经 YiMagazine 专访彭凯平（AI 陪伴）","https://m.163.com/dy/article/JR0G3VGP05119361.html"],
+["未来论坛 · 积极是伟大的人性","https://www.futureforum.org.cn/cn/nav/detail/82.html"]
 ];
-P.DISCLAIM="本站由 AI（Claude）根据上列公开资料整理，是概括与转述，不是彭凯平本人的文字，也未经本人或清华大学审阅。书目和目录据出版社和豆瓣页面核对；各书“讲什么”依据官方简介和目录概括，编者没有通读原书。数字（论文数、热线数据、幸福排名等）以报道为准，不同报道之间有出入的已注明。他的部分通俗讲法（如某些生理机制的说法）在报道中没有给出文献出处，学习时宜对照原始研究。";
+P.DISCLAIM="本站由 AI（Claude）根据上列公开资料以及一份 2025 年讲座的听讲笔记整理，是概括与转述，不是彭凯平本人的文字，也未经本人或清华大学审阅。书目和目录据出版社和豆瓣页面核对；各书“讲什么”依据官方简介和目录概括，编者没有通读原书。数字（论文数、热线数据、幸福排名等）以报道为准，不同报道之间有出入的已注明。他的部分通俗讲法（如某些生理机制的说法）在报道中没有给出文献出处，学习时宜对照原始研究。";
